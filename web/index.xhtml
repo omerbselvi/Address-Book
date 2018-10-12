@@ -11,23 +11,25 @@
 <h:form>
     <f:metadata>
         <f:event type="preRenderView" listener="#{humanView.onLoad}" />
-    </f:metadata>A
+    </f:metadata>
     <h:body>
+        <div style="margin: auto;width: 50%;padding: 10px;">
+            <p:dataTable var="human"  value="#{humanView.humanList}">
+                <p:column headerText="Id">
+                    <h:outputText value="#{human.name}" />
+                </p:column>
 
-        <p:dataTable var="human" value="#{humanView.humanList}">
-            <p:column headerText="Id">
-                <h:outputText value="#{human.name}" />
-            </p:column>
+                <p:column headerText="Year">
+                    <h:outputText value="#{human.surname}" />
+                </p:column>
 
-            <p:column headerText="Year">
-                <h:outputText value="#{human.surname}" />
-            </p:column>
 
-            
-            <p:column headerText="Brand">
-                <h:outputText value="#{human.age}" />
-            </p:column>
-        </p:dataTable>
+                <p:column headerText="Brand">
+                    <h:outputText value="#{human.age}" />
+                </p:column>
+            </p:dataTable>
+        </div>
+
 
     </h:body>
 </h:form>
