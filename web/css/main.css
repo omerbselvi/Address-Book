@@ -18,3 +18,10 @@
 .deleteButton .ui-button-text{
     color: black;
 }
+.formTable{
+    margin: auto;
+    padding: 10px;
+}
+.textLabel{
+    padding: 5px;
+}

@@ -37,8 +37,48 @@
                 </div>
             </div>
 
+        <table class="formTable">
+            <tr>
+                <td>
+                    <p:outputLabel styleClass="textLabel" value="Name: " />
+                </td>
+                <td>
+                    <p:inputText value="#{addNewHuman.name}"/>
+                </td>
+                <td>
+                    <p:outputLabel styleClass="textLabel" value="Age: " />
+                </td>
+                <td>
+                    <p:inputText value="#{addNewHuman.age}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p:outputLabel styleClass="textLabel" value="Surname: " />
+                </td>
+                <td>
+                    <p:inputText value="#{addNewHuman.surname}"/>
+                </td>
+                <td>
+                    <p:outputLabel styleClass="textLabel" value="Phone Number: " />
+                </td>
+                <td>
+                    <p:inputText value="#{addNewHuman.phoneNumber}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p:outputLabel styleClass="textLabel" value="Address: " />
+                </td>
+                <td>
+                    <p:inputText value="#{addNewHuman.address}"/>
+                </td>
+                <td>
+                    <p:commandButton value="Save" action="#{addNewHuman.addHumanAction}" />
+                </td>
+            </tr>
+        </table>
         </div>
-
         <h:outputScript src="https://code.jquery.com/jquery-3.1.0.min.js" ></h:outputScript>
         <h:outputScript src="Bootstrap/bootstrap-4.1.3-dist/js/bootstrap.min.js" ></h:outputScript>
     </h:form>
