@@ -13,9 +13,9 @@ public class HumanView {
     public void onLoad(){
         if(getHumanList() == null) {
             setHumanList(new ArrayList<Human>());
-            getHumanList().add(new Human("Ömer Buğra", "Selvi", 21));
-            getHumanList().add(new Human("TEST", "TEST2", 12));
-            getHumanList().add(new Human("TEST3", "TEST4", 13));
+            getHumanList().add(new Human("Ömer Buğra", "Selvi", 21, "123456", "Beşiktaş"));
+            getHumanList().add(new Human("TEST", "TEST2", 12, "76654321", "Test"));
+            getHumanList().add(new Human("TEST3", "TEST4", 13,"123155", "TEST5"));
         }
     }
 
