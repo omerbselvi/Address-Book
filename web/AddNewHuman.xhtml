@@ -27,45 +27,17 @@
                 <a class="navbar-brand" href="#">Address Book</a>
                 <div>
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.xhtml">People <span class="sr-only">(current)</span></a>
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="AddNewHuman.xhtml">Submit New</a>
+                            <a class="nav-link" href="index.xhtml">People </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Submit New <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="datatableHuman">
-                <p:dataTable var="human" id="humanDatatable" value="#{humanView.humanList}">
-                    <p:column headerText="Name">
-                        <h:outputText value="#{human.name}" />
-                    </p:column>
 
-                    <p:column headerText="Surname">
-                        <h:outputText value="#{human.surname}" />
-                    </p:column>
-
-
-                    <p:column headerText="Age">
-                        <h:outputText value="#{human.age}" />
-                    </p:column>
-
-                    <p:column headerText="Phone Number">
-                        <h:outputText value="#{human.phoneNumber}" />
-                    </p:column>
-
-                    <p:column headerText="Address">
-                        <h:outputText value="#{human.address}" />
-                    </p:column>
-
-                    <p:column>
-                        <p:commandButton value="X" styleClass="deleteButton" action="#{humanView.deleteHumanObject(human)}" update="humanDatatable"></p:commandButton>
-                    </p:column>
-                </p:dataTable>
-            </div>
-
-            </div>
+        </div>
 
         <h:outputScript src="https://code.jquery.com/jquery-3.1.0.min.js" ></h:outputScript>
         <h:outputScript src="Bootstrap/bootstrap-4.1.3-dist/js/bootstrap.min.js" ></h:outputScript>

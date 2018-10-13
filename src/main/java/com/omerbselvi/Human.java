@@ -15,6 +15,8 @@ public class Human {
         this.age = age;
         this.name = name;
         this.surname = surname;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
     }
 
     public int getAge() {

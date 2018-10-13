@@ -6,3 +6,15 @@
     width: 80%;
     padding: 10px;
 }
+.datatableHuman th:nth-child(6) {
+    width: 70px;
+}
+.datatableHuman .deleteButton{
+    background: none;
+    background-color: red;
+    text-shadow: none;
+    border: red;
+}
+.deleteButton .ui-button-text{
+    color: black;
+}

@@ -19,6 +19,10 @@ public class HumanView {
         }
     }
 
+    public void deleteHumanObject(Human humanToDelete){
+        humanList.remove(humanToDelete);
+    }
+
     public ArrayList<Human> getHumanList() {
         return humanList;
     }
