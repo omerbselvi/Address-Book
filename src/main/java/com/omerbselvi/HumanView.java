@@ -2,6 +2,7 @@ package com.omerbselvi;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @ManagedBean(name = "humanView")
@@ -13,9 +14,15 @@ public class HumanView {
     public void onLoad(){
         if(getHumanList() == null) {
             setHumanList(new ArrayList<Human>());
-            getHumanList().add(new Human("Ömer Buğra", "Selvi", 21, "123456", "Beşiktaş"));
-            getHumanList().add(new Human("TEST", "TEST2", 12, "76654321", "Test"));
-            getHumanList().add(new Human("TEST3", "TEST4", 13,"123155", "TEST5"));
+            HumanBean humanBean = new HumanBean();
+
+            try {
+                humanList.addAll(humanBean.getHumans());
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 

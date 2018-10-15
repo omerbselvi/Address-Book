@@ -5,11 +5,14 @@ import javax.faces.bean.ManagedBean;
 
 public class Human {
 
+    private int id;
     private String name;
     private String surname;
     private int age;
     private String phoneNumber;
     private String address;
+
+    Human(){}
 
     Human(String name, String surname, int age, String phoneNumber, String address){
         this.age = age;
@@ -18,6 +21,7 @@ public class Human {
         this.phoneNumber = phoneNumber;
         this.address = address;
     }
+
 
     public int getAge() {
         return age;
@@ -57,5 +61,13 @@ public class Human {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
