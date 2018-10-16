@@ -1,2 +1,2 @@
 # Address-Book
-An address book application made with Apache Maven,JSF,PrimeFaces.
+An address book application made with Apache Maven, JSF, PrimeFaces and Mysql database.
