@@ -21,7 +21,8 @@ public class AddNewHumanView {
     //TODO IMPROVE THIS METHOD
     public String addHumanAction(){
         Human newHumanToAdd = new Human(name, surname, age, phoneNumber, address);
-        humanView.getHumanList().add(newHumanToAdd);
+        HumanBean humanBean = new HumanBean();
+        humanBean.insertHumanAction(newHumanToAdd);
         return "index.xhtml";
     }
     public String getName() {

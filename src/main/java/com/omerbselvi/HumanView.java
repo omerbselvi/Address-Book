@@ -12,7 +12,6 @@ public class HumanView {
     private ArrayList<Human> humanList;
 
     public void onLoad(){
-        if(getHumanList() == null) {
             setHumanList(new ArrayList<Human>());
             HumanBean humanBean = new HumanBean();
 
@@ -23,10 +22,12 @@ public class HumanView {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
     }
 
+
     public void deleteHumanObject(Human humanToDelete){
+        HumanBean humanBean = new HumanBean();
+        humanBean.deleteHumanAction(humanToDelete);
         humanList.remove(humanToDelete);
     }
 
