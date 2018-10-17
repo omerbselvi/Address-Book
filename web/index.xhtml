@@ -38,6 +38,10 @@
             </div>
             <div class="datatableHuman">
                 <p:dataTable var="human" id="humanDatatable" value="#{humanView.humanList}">
+                    <p:column  headerText="Id" >
+                        <h:outputText value="#{human.id}" />
+                    </p:column>
+
                     <p:column headerText="Name">
                         <h:outputText value="#{human.name}" />
                     </p:column>
