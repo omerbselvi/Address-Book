@@ -73,11 +73,24 @@
                 <td>
                     <p:inputText value="#{addNewHuman.address}"/>
                 </td>
-                <td>
-                    <p:commandButton value="Save" action="#{addNewHuman.addHumanAction}" />
-                </td>
             </tr>
         </table>
+            <div class="col-md text-center pb-2">
+                <p:commandButton styleClass="btn btn-primary" value="Save" action="#{addNewHuman.addHumanAction}" />
+            </div>
+
+            <div class="card-footer font-small bg-dark pt-2 text-white">
+                <div class="container-fluid text-center text-md-left">
+                    <div class="row">
+                        <div class="col-md-6 mt-md-0">
+                            <p>An address book application made with Apache Maven, JSF, PrimeFaces and Mysql database.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright text-center pb-2">2018
+                    <a href="https://github.com/omerbselvi"> Github/omerbselvi</a>
+                </div>
+            </div>
         </div>
         <h:outputScript src="https://code.jquery.com/jquery-3.1.0.min.js" ></h:outputScript>
         <h:outputScript src="Bootstrap/bootstrap-4.1.3-dist/js/bootstrap.min.js" ></h:outputScript>
