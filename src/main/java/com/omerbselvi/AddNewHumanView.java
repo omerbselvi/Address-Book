@@ -1,10 +1,12 @@
 package com.omerbselvi;
 
 import javax.faces.application.Application;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import java.sql.SQLException;
 
 @ManagedBean(name = "addNewHuman")
 @SessionScoped
@@ -18,12 +20,38 @@ public class AddNewHumanView {
     @ManagedProperty(value = "#{humanView}")
     private HumanView humanView;
 
+    public void sendBundledMessage(FacesMessage.Severity messageType, String subject, String description){
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(messageType, subject, description));
+    }
+
     //TODO IMPROVE THIS METHOD
     public String addHumanAction(){
+        boolean anyError = false;
+        if(name == null || name.length() < 1){
+             sendBundledMessage(FacesMessage.SEVERITY_WARN, "Warning", "Fill in the name field");
+             anyError = true;
+        }
+        if(surname == null || surname.length() < 1){
+            sendBundledMessage(FacesMessage.SEVERITY_WARN, "Warning", "Fill in the surname field");
+            anyError = true;
+        }
+        if(age < 0){
+            sendBundledMessage(FacesMessage.SEVERITY_WARN, "Warning", "Fill in the age field");
+            anyError = true;
+        }
+        if(anyError){
+            return "addNewHuman.xhtml";
+        }
         Human newHumanToAdd = new Human(name, surname, age, phoneNumber, address);
         HumanBean humanBean = new HumanBean();
-        humanBean.insertHumanAction(newHumanToAdd);
-        return "index.xhtml";
+        try {
+            humanBean.insertHumanAction(newHumanToAdd);
+            sendBundledMessage(FacesMessage.SEVERITY_INFO, "Info", "New address is successfully created.");
+        } catch (SQLException e) {
+            sendBundledMessage(FacesMessage.SEVERITY_ERROR, "Error", "SQL Exception");
+            e.printStackTrace();
+        }
+        return "addNewHuman.xhtml";
     }
     public String getName() {
         return name;

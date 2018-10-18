@@ -6,8 +6,11 @@
     width: 80%;
     padding: 10px;
 }
-.datatableHuman th:nth-child(6) {
+.datatableHuman th:nth-child(7) {
     width: 70px;
+}
+.datatableHuman th:nth-child(1) {
+    width: 35px;
 }
 .datatableHuman .deleteButton{
     background: none;

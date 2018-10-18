@@ -49,7 +49,7 @@ public class HumanBean implements Serializable {
 
     protected static final String INSERT = "INSERT INTO Human(name, surname, age, phone_number, address) VALUES (?, ?, ?, ?, ?)";
 
-    public void insertHumanAction(Human myItem) {
+    public void insertHumanAction(Human myItem) throws SQLException{
         PreparedStatement ps = null;
         try {
             ps = connect.prepareStatement(INSERT);
