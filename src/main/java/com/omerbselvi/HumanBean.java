@@ -47,6 +47,24 @@ public class HumanBean implements Serializable {
         }
     }
 
+    public final static String IS_DUPLICATE = "SELECT COUNT(human_id) as cnt FROM Human WHERE name = ? AND surname = ?";
+    public int isDuplicate(Human myItem){
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int count = 0;
+        try {
+            ps = connect.prepareStatement(IS_DUPLICATE);
+            ps.setString(1,myItem.getName());
+            ps.setString(2,myItem.getSurname());
+            rs = ps.executeQuery();
+            rs.next();
+            count = rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
     protected static final String INSERT = "INSERT INTO Human(name, surname, age, phone_number, address) VALUES (?, ?, ?, ?, ?)";
 
     public void insertHumanAction(Human myItem) throws SQLException{

@@ -39,11 +39,17 @@ public class AddNewHumanView {
             sendBundledMessage(FacesMessage.SEVERITY_WARN, "Warning", "Fill in the age field");
             anyError = true;
         }
+        Human newHumanToAdd = new Human(name, surname, age, phoneNumber, address);
+
+        HumanBean humanBean = new HumanBean();
+        int count = humanBean.isDuplicate(newHumanToAdd);
+        if (count > 0){
+            sendBundledMessage(FacesMessage.SEVERITY_ERROR, "Warning", "There are already someone named: " + name + " " + surname);
+            anyError = true;
+        }
         if(anyError){
             return "addNewHuman.xhtml";
         }
-        Human newHumanToAdd = new Human(name, surname, age, phoneNumber, address);
-        HumanBean humanBean = new HumanBean();
         try {
             humanBean.insertHumanAction(newHumanToAdd);
             sendBundledMessage(FacesMessage.SEVERITY_INFO, "Info", "New address is successfully created.");
