@@ -20,6 +20,9 @@
 <h:body>
     <h:form>
         <f:metadata>
+            <f:event type="preRenderView" listener="#{loginAction.loginCheck}" />
+        </f:metadata>
+        <f:metadata>
             <f:event type="preRenderView" listener="#{humanView.onLoad}" />
         </f:metadata>
         <div class="container">
@@ -31,7 +34,10 @@
                             <a class="nav-link" href="index.xhtml">People </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Submit New <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="AddNewHuman.xhtml">Submit New <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <p:commandLink styleClass="nav-link" action="#{loginAction.logOut}" value="Log Out" />
                         </li>
                     </ul>
                 </div>

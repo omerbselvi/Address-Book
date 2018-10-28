@@ -19,60 +19,45 @@
 </h:head>
 <h:body>
     <h:form>
-        <f:metadata>
-            <f:event type="preRenderView" listener="#{loginAction.loginCheck}" />
-        </f:metadata>
-        <f:metadata>
-            <f:event type="preRenderView" listener="#{humanView.onLoad}" />
-        </f:metadata>
+
         <div class="container">
             <div class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand" href="#">Address Book</a>
                 <div>
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.xhtml">People <span class="sr-only">(current)</span></a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.xhtml">People</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="AddNewHuman.xhtml">Submit New</a>
                         </li>
-                        <li class="nav-item">
-                            <p:commandLink styleClass="nav-link" action="#{loginAction.logOut}" value="Log Out" />
+                        <li class="nav-item active">
+                            <a class="nav-link" href="Login.xhtml">Login <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="datatableHuman">
-                <p:dataTable var="human" id="humanDatatable" value="#{humanView.humanList}">
-                    <p:column  headerText="Id" >
-                        <h:outputText value="#{human.id}" />
-                    </p:column>
 
-                    <p:column headerText="Name">
-                        <h:outputText value="#{human.name}" />
-                    </p:column>
-
-                    <p:column headerText="Surname">
-                        <h:outputText value="#{human.surname}" />
-                    </p:column>
-
-
-                    <p:column headerText="Age">
-                        <h:outputText value="#{human.age}" />
-                    </p:column>
-
-                    <p:column headerText="Phone Number">
-                        <h:outputText value="#{human.phoneNumber}" />
-                    </p:column>
-
-                    <p:column headerText="Address">
-                        <h:outputText value="#{human.address}" />
-                    </p:column>
-
-                    <p:column>
-                        <p:commandButton value="X" styleClass="deleteButton" action="#{humanView.deleteHumanObject(human)}" update="humanDatatable"></p:commandButton>
-                    </p:column>
-                </p:dataTable>
+            <table class="formTable">
+                <tr>
+                    <td>
+                        <p:outputLabel styleClass="textLabel" value="Username" />
+                    </td>
+                    <td>
+                        <p:inputText value="#{loginSession.username}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p:outputLabel styleClass="textLabel" value="Password" />
+                    </td>
+                    <td>
+                        <p:inputText type="password" value="#{loginSession.password}" />
+                    </td>
+                </tr>
+            </table>
+            <div class="col-md text-center pb-2">
+                <p:commandButton styleClass="btn btn-primary" value="Login" action="#{loginAction.activateUser}" />
             </div>
 
             <div class="card-footer font-small bg-dark pt-2 text-white">

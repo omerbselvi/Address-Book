@@ -8,30 +8,10 @@ import java.util.ArrayList;
 
 @ManagedBean
 @SessionScoped
-public class HumanBean implements Serializable {
-
-    private Connection connect;
+public class HumanBean extends ConnectionBase implements Serializable {
 
     HumanBean(){
-
-        connect = null;
-
-        String url = "jdbc:mysql://localhost:3306/AddressBookDB?autoReconnect=true&useSSL=false";
-
-        String username = "jsf";
-        String password = "password";
-
-        try {
-
-            Class.forName("com.mysql.jdbc.Driver");
-
-            connect = DriverManager.getConnection(url, username, password);
-
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        super();
     }
 
     protected static final String DELETE = "DELETE FROM Human WHERE human_id = ?";
