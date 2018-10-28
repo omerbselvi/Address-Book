@@ -36,12 +36,12 @@ public class LoginAction extends ConnectionBase{
             sendBundledMessage(FacesMessage.SEVERITY_ERROR, "Username", "Username field empty.");
             anyFieldEmpty = true;
         }
-        if(loginSession.getPassword() == null && loginSession.getPassword().trim().length() == 0){
+        if(loginSession.getPassword() == null || loginSession.getPassword().trim().length() == 0){
             sendBundledMessage(FacesMessage.SEVERITY_ERROR, "Password", "Password field empty.");
             anyFieldEmpty = true;
         }
         if(anyFieldEmpty){
-            return "index?faces-redirect=true";
+            return "Login";
         }
         username = loginSession.getUsername();
         password = loginSession.getPassword();
@@ -50,12 +50,12 @@ public class LoginAction extends ConnectionBase{
         isAuthenticated = authenticateUser(username, password);
         if(isAuthenticated){
             loginSession.setLoggedIn(true);
-            return "index?faces-redirect=true";
+            return "index";
         }
         else{
             loginSession.setLoggedIn(false);
-            sendBundledMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Username or password wrong.");
-            return "Login?faces-redirect=true";
+            sendBundledMessage(FacesMessage.SEVERITY_ERROR, "Error", "Username or password wrong.");
+            return "Login";
         }
     }
 
