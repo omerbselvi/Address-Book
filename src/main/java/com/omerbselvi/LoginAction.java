@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,13 +20,27 @@ public class LoginAction extends ConnectionBase{
     private LoginSession loginSession;
 
     public void logOut(){
-        loginSession.setLoggedIn(false);
+        ExternalContext ec = FacesContext
+                .getCurrentInstance()
+                .getExternalContext();
+        HttpServletRequest request = (HttpServletRequest) ec.getRequest();
+        request.getSession( false ).invalidate();
     }
 
     public void loginCheck() throws IOException {
-        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-        if(!getLoginSession().isLoggedIn()){
-            ec.redirect(ec.getRequestContextPath() + "/Login.xhtml");
+        if(loginSession == null) loginSession = new LoginSession();
+        ExternalContext ec = FacesContext
+                .getCurrentInstance()
+                .getExternalContext();
+        HttpServletRequest httpServletRequest = (HttpServletRequest) ec.getRequest();
+        String url = httpServletRequest.getRequestURL().toString();
+        if(url != null && url.trim().length() > 0){
+            if(!getLoginSession().isLoggedIn() && !url.contains("Login")){
+                ec.redirect(ec.getRequestContextPath() + "/Login.xhtml");
+            }
+            else if(getLoginSession().isLoggedIn() && url.contains("Login")){
+                ec.redirect(ec.getRequestContextPath() + "/index.xhtml");
+            }
         }
     }
     public String activateUser(){

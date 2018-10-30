@@ -20,7 +20,9 @@
 </h:head>
 <h:body>
     <h:form>
-
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{loginAction.loginCheck}" />
+        </f:metadata>
         <div class="container">
             <div class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand" href="#">Address Book</a>
